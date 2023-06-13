@@ -1,0 +1,53 @@
+
+<head>
+    <style> body { margin: 0; } </style>
+  
+    <script src="//unpkg.com/3d-force-graph"></script>
+    <!--<script src="../../dist/3d-force-graph.js"></script>-->
+  </head>
+  
+  <body>
+    <div id="3d-graph"></div>
+    <script>
+        
+        // Carrega Json
+    // function carregarArquivoJson() {
+    //     return fetch('teste2.json')
+    //         .then(response => response.json())
+    //         .catch(error => {
+    //         console.error('Ocorreu um erro ao carregar o arquivo JSON:', error);
+    //         throw error; // Propaga o erro para quem chamar a função
+    //     });
+    // }
+
+    // carregarArquivoJson()
+    // .then(data => {
+    // // Carrega Grafo
+        const Graph = ForceGraph3D()
+        (document.getElementById('3d-graph'))
+        //.graphData(data)
+        .jsonUrl('teste2.json')
+        .linkDirectionalParticleColor("white")
+        .linkDirectionalArrowLength(3.5)
+        .linkDirectionalArrowRelPos(1)
+        .linkCurvature(0.25)
+        .nodeThreeObject(node => {
+          // da cor aos nos
+          console.log(node.name)
+          if (node.name == "Start"){
+            node.color = "red";
+          }
+          else if (node.name == "End"){
+            node.color = "green";
+          }
+          else{
+            node.color = "white";
+          }
+        });
+    //console.log(data);
+    // })
+    // .catch(error => {
+    // console.error('Ocorreu um erro:', error);
+    // });
+    </script>
+  </body>
